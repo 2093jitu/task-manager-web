@@ -1,0 +1,19 @@
+<div class="app-container">
+  <mat-toolbar color="primary" class="app-toolbar">
+    <mat-icon>assignment</mat-icon>
+    <span>{{ title() }}</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="toggleForm()" matTooltip="Add New Task">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="app-content">
+    <div class="content-wrapper">
+      <app-task-list 
+        (taskUpdated)="onTaskSaved($event)"
+        (taskDeleted)="onTaskDeleted($event)">
+      </app-task-list>
+    </div>
+  </div>
+</div>

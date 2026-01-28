@@ -1,0 +1,163 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Import Angular Material prebuilt theme
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+// Global styles
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #fafafa;
+  color: #333;
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+// Custom snackbar styles
+.error-snackbar {
+  background-color: #f44336 !important;
+  color: white !important;
+}
+
+.success-snackbar {
+  background-color: #4caf50 !important;
+  color: white !important;
+}
+
+.info-snackbar {
+  background-color: #2196f3 !important;
+  color: white !important;
+}
+
+// Clean dialog styles
+.task-form-dialog {
+  .mat-mdc-dialog-container {
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    padding: 24px !important;
+  }
+}
+
+.dialog-backdrop {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.confirmation-dialog {
+  .mat-mdc-dialog-container {
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+    padding: 24px !important;
+  }
+  
+  .mat-mdc-dialog-content {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .mat-mdc-dialog-actions {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+// Professional table styles
+.mat-mdc-table {
+  .mat-mdc-header-row {
+    background-color: #f8f9fa;
+    
+    .mat-mdc-header-cell {
+      font-weight: 600;
+      color: #495057;
+      border-bottom: 2px solid #dee2e6;
+    }
+  }
+  
+  .mat-mdc-row {
+    &:hover {
+      background-color: #f8f9fa;
+    }
+    
+    &.overdue-row {
+      background-color: #fff5f5;
+      
+      &:hover {
+        background-color: #ffe6e6;
+      }
+    }
+  }
+}
+
+// Professional form styles
+.mat-mdc-form-field {
+  .mat-mdc-form-field-outline {
+    color: #dee2e6;
+  }
+  
+  &.mat-focused .mat-mdc-form-field-outline {
+    color: #667eea;
+  }
+}
+
+// Professional button styles
+.mat-mdc-raised-button {
+  border-radius: 8px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  
+  &.mat-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    
+    &:hover {
+      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+    }
+  }
+}
+
+// Professional chip styles
+.mat-mdc-chip {
+  border-radius: 16px;
+  font-weight: 500;
+  font-size: 12px;
+  
+  &.mat-primary {
+    background-color: #e3f2fd;
+    color: #1976d2;
+  }
+  
+  &.mat-accent {
+    background-color: #fff3e0;
+    color: #f57c00;
+  }
+  
+  &.mat-warn {
+    background-color: #ffebee;
+    color: #d32f2f;
+  }
+}

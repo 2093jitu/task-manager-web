@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Edit Task' : 'Create New Task' }}</h2>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="form">
+    <mat-form-field appearance="outline" class="form-field first-field">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" placeholder="Enter task title">
+      <mat-error>{{ getFieldError('title') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" placeholder="Enter task description" rows="3"></textarea>
+      <mat-error>{{ getFieldError('description') }}</mat-error>
+    </mat-form-field>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let status of taskStatuses" [value]="status">
+            {{ status }}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{ getFieldError('status') }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority">
+          <mat-option *ngFor="let priority of taskPriorities" [value]="priority">
+            {{ priority }}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{ getFieldError('priority') }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Due Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dueDate" placeholder="MM/DD/YYYY">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error>{{ getFieldError('dueDate') }}</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button [disabled]="submitting" [mat-dialog-close]="null">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="taskForm.invalid || submitting" cdkFocusInitial>
+    {{ isEditMode ? 'Update' : 'Create' }}
+  </button>
+</mat-dialog-actions>
