@@ -1,14 +1,17 @@
 # syntax=docker/dockerfile:1
 
+# ---------- Global build args ----------
+ARG NODE_VERSION=22.12.0
+ARG NGINX_VERSION=1.27-alpine
+
 # ---------- Build stage ----------
-ARG NODE_VERSION=20.11.1
 FROM node:${NODE_VERSION}-alpine AS builder
 
 WORKDIR /app
 
 # Install dependencies first (better layer caching)
 COPY package*.json ./
-RUN npm ci --no-audit --no-fund
+RUN npm ci --legacy-peer-deps --no-audit --no-fund
 
 # Copy source and build
 COPY . .
@@ -18,7 +21,6 @@ RUN npm run build:prod
 
 
 # ---------- Runtime stage ----------
-ARG NGINX_VERSION=1.27-alpine
 FROM nginx:${NGINX_VERSION} AS runner
 
 # Copy nginx configuration for SPA routing
